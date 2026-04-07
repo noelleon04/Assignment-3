@@ -18,7 +18,7 @@ app.use(express.urlencoded({extended:true}))
 app.engine(".hbs", exphbs.engine({											
     extname: ".hbs",                                                        
     defaultLayout: false,                                                  
-    partialsDir: path.join(__dirname, "views/partials")
+    partialsDir: path.join(__dirname, "Views/Partials")
 }));
 
 
@@ -38,7 +38,7 @@ app.use(session({
 }));
 
 app.use(express.static(path.join(__dirname, "Public")));
-const filePath = path.join(__dirname, "Public","imagelist.txt")
+
 
 app.set("view engine", ".hbs");     
 

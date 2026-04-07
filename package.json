@@ -2,7 +2,7 @@
   "name": "web-300-assignment-3",
   "version": "1.0.0",
   "description": "Assignment 3 of Web 300",
-  "main": "index.js",
+  "main": "Index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
