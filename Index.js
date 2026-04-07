@@ -12,6 +12,8 @@ const mongoose = require("mongoose");
 const Country = require("./Models/schemas")
 const purchaseRouter = require("./Routes/purchase");
 
+app.set("views", path.join(__dirname, "Views"));
+
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 
@@ -20,6 +22,8 @@ app.engine(".hbs", exphbs.engine({
     defaultLayout: false,                                                  
     partialsDir: path.join(__dirname, "Views/Partials")
 }));
+
+
 
 
 var randomString = randomStr.generate();
@@ -37,10 +41,11 @@ app.use(session({
     ephemeral: true                                                         
 }));
 
+
 app.use(express.static(path.join(__dirname, "Public")));
 
 
-app.set("view engine", ".hbs");     
+app.set("view engine", "hbs");     
 
 app.use("/purchase", purchaseRouter);
 
