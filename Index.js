@@ -222,11 +222,12 @@ app.post('/register', function(req,res){
 })
 
 
-mongoose.connect("mongodb+srv://leonchang_db_user:L4y2z7lc@cluster0.noiogtx.mongodb.net/Assignment3DB?appName=Cluster0")
-.then(()=>{
+mongoose.connect(process.env.MONGODB_URI)
+.then(() => {
     console.log("Connected to MongoDB");
-    const server = app.listen(HTTP_PORT, () => {
-    console.log(`Listening on port ${HTTP_PORT}`);
-    });
 })
-.catch(err => console.log(err));
+.catch((err) => {
+    console.log("MongoDB connection error:", err);
+});
+
+module.exports = app;
