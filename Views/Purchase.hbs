@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/styles.css">
+    <title>Purchase Information</title>
+</head>
+
+<body>
+
+{{> header title="Leon Chang Countries to visit"}}
+
+<div class="purchaseInformation">
+
+    <div class="imageDiv">
+        <img src="/{{data.picture}}" alt="">
+    </div>
+
+    <div class="description">
+        <h3 class="nameText">{{data.galleryName}}</h3>
+        <h3 class="descriptionText">{{data.description}}</h3>
+        <h3 class="price">CAD {{data.price}}</h3>
+    </div>
+
+    <div class="buttonsDiv">
+        <form action="/purchase" method="POST">
+            <input type="hidden" name="id" value="{{data.id}}">
+            <input type="hidden" name="picture" value="{{data.picture}}">
+            <input type="hidden" name="galleryName" value="{{data.galleryName}}">
+            <input type="hidden" name="price" value="{{data.price}}">
+            <button class="btn" onclick="alert('SOLD!!!!!!')">Buy</button>
+        </form>
+
+        <form action="/purchase/backFromPurchase" method="POST">
+            <input type="hidden" name="id" value="{{data.id}}">
+            <input type="hidden" name="picture" value="{{data.picture}}">
+            <input type="hidden" name="galleryName" value="{{data.galleryName}}">
+            <input type="hidden" name="price" value="{{data.price}}">
+            <button class="btn" onclick="alert('MAYBE NEXT TIME!')">Cancel</button>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

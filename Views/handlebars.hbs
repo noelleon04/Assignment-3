@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+    <link rel="stylesheet" href="/styles.css">
+	<title>Assignment 1 Leon Chnang</title>
+</head>
+<body>
+    <form method="post" action="/">
+        {{> header title="Leon Chang Countries to visit"}}
+        <div class="radiotDiv">
+            <h2 class="radioTitle">Select a country</h2>
+            <select class="countryOptions" name="country">
+                <option value=""></option>
+                {{#each data.options}}
+                <option value ="{{fileName}}">{{name}}</option>
+                {{/each}}
+            </select>   
+            <button class="countryButton" type="submit" value ="submit">Submit</button>
+        </div>
+            <div class="galleryDiv">
+                {{#if data.id}}
+        <a href="/purchase/{{data.id}}">
+            <img src="/{{data.picture}}" alt="">
+        </a>
+        {{else}}
+        <img src="/{{data.picture}}" alt="">
+        {{/if}}
+    </div>
+    <div class="nameDiv"><h3 class="nameText">{{data.galleryName}}</h3></div>
+    </form>
+
+    <div class="menu">    
+        <div class="usernameDiv">{{data.username}}</div>
+        <div class="logoutDiv">
+            <form action="/logout" method="POST">
+                <button class="linkButton">LOGOUT</button>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+</html>

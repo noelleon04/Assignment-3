@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+    <link rel="stylesheet" href="/styles.css">
+	<title>Leon Chang Gallery Signup</title>
+</head>
+
+    {{> header title="Leon Chang Countries to visit"}}
+
+    
+    
+    <div class ="login-container">
+        <h2>Login</h2>
+        <form class="login-form" method="post" action="/login">
+            <input type="text" name="username" placeholder="Username" value="{{data.username}}" required />
+            <input type="password" name="password" placeholder="Password" value="{{data.password}}" required />
+            <button type="submit" class="submit-btn">Submit</button>
+         </form>
+        <form class="login-form" method="get" action="/register">
+            <button type="submit" class="register-btn">Register</button>
+        </form>
+        {{#if data.errorMessage}}
+         <div class="errorMessage">
+            <p>{{data.errorMessage}}</p>
+         </div>
+        {{/if}}
+    </div>
+
+    </form>
+</body>
+</html>

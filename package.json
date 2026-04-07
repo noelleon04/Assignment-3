@@ -1,0 +1,23 @@
+{
+  "name": "web-300-assignment-3",
+  "version": "1.0.0",
+  "description": "Assignment 3 of Web 300",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Assignment"
+  ],
+  "author": "Leon Chang",
+  "license": "ISC",
+  "dependencies": {
+    "client-sessions": "^0.8.0",
+    "dotenv": "^17.4.0",
+    "express": "^5.2.1",
+    "express-handlebars": "^9.0.1",
+    "linebyline": "^1.3.0",
+    "mongoose": "^9.4.1",
+    "randomstring": "^1.3.1"
+  }
+}
