@@ -88,6 +88,7 @@ app.post("/", async function(req, res) {
     }
 
     try {
+        await connectDB();
         const items = await Country.find({ status: "A" });
 
         let buttonOptions = items.map(item => {
