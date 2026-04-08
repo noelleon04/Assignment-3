@@ -147,7 +147,7 @@ app.post("/login", async function(req,res){
 let username = req.body.username;
 let password = req.body.password;
 
-    fs.readFile("./User.JSON","utf-8",async (err,data) =>{
+   fs.readFile(path.join(__dirname, "User.JSON"), "utf-8",async (err,data) =>{
     if(err) (console.log(err)); 
     let userObj = JSON.parse(data);
 
@@ -204,13 +204,13 @@ app.post('/register', function(req,res){
     let confirmPass = req.body.password2;
 
     if (password === confirmPass){
-        fs.readFile("./User.JSON","utf-8", async (err,data)=>{
+        fs.readFile(path.join(__dirname, "User.JSON"), "utf-8", async (err,data)=>{
             if(err) throw err;
 
             let userObj = JSON.parse(data);
 
             userObj[username] = password;
-            fs.writeFile("./User.JSON",JSON.stringify(userObj), (err)=>{
+            fs.writeFile(path.join(__dirname, "User.JSON"),JSON.stringify(userObj),(err) => {
                 if (err) throw err;
                 res.redirect("/login");
             })
