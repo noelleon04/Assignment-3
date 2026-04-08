@@ -35,8 +35,8 @@ app.use(session({
 
     cookieName: "LoginCookie",
     secret: randomString,      										
-    duration: 5 * 60 * 1000,										
-    activeDuration: 1 * 60 * 1000,										
+    duration: 60 * 60 * 1000,										
+    activeDuration: 10 * 60 * 1000,										
     httpOnly: true,                                                    
     secure: true,                                                          
     ephemeral: true                                                         
