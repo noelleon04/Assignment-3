@@ -33,8 +33,8 @@ if (!process.env.SESSION_SECRET) {
 app.use(session({
     cookieName: "LoginCookie",
     secret: process.env.SESSION_SECRET,
-    duration: 24 * 60 * 60 * 1000,
-    activeDuration: 30 * 60 * 1000,
+    duration: 5 * 60 * 1000,
+    activeDuration: 1 * 60 * 1000,
     httpOnly: true,
     secure: true,
     ephemeral: false
