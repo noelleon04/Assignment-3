@@ -7,7 +7,6 @@ const app = express();
 const readline = require("linebyline");
 const fs = require("fs");
 const session = require('client-sessions');
-const randomStr = require("randomstring");
 const mongoose = require("mongoose");
 const Country = require("./Models/schemas")
 const purchaseRouter = require("./Routes/purchase");
@@ -25,23 +24,21 @@ app.engine(".hbs", exphbs.engine({
 }));
 
 
+if (!process.env.SESSION_SECRET) {
+    throw new Error("SESSION_SECRET is missing");
+}
 
 
-var randomString = randomStr.generate();
 
-
-
-app.use(session({														
-
+app.use(session({
     cookieName: "LoginCookie",
-    secret: randomString,      										
-    duration: 60 * 60 * 1000,										
-    activeDuration: 10 * 60 * 1000,										
-    httpOnly: true,                                                    
-    secure: true,                                                          
-    ephemeral: true                                                         
+    secret: process.env.SESSION_SECRET,
+    duration: 24 * 60 * 60 * 1000,
+    activeDuration: 30 * 60 * 1000,
+    httpOnly: true,
+    secure: true,
+    ephemeral: false
 }));
-
 
 app.use(express.static(path.join(__dirname, "Public")));
 
