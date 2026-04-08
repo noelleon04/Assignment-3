@@ -11,6 +11,7 @@ const randomStr = require("randomstring");
 const mongoose = require("mongoose");
 const Country = require("./Models/schemas")
 const purchaseRouter = require("./Routes/purchase");
+const connectDB = require("./db");
 
 app.set("views", path.join(__dirname, "Views"));
 
@@ -54,6 +55,7 @@ app.get("/", async (req, res) => {
         return res.redirect("/login");
   }
   try {
+    await connectDB()
     const items = await Country.find({ status: "A" });
 
     let buttonOptions = items.map(item => {
@@ -153,6 +155,8 @@ let password = req.body.password;
 
     if(userObj.hasOwnProperty(username)){
         if(password == userObj[username]){
+
+            await connectDB();
             req.LoginCookie.user = username
 
             await Country.updateMany(
@@ -226,13 +230,5 @@ app.post('/register', function(req,res){
 
 })
 
-
-mongoose.connect(process.env.MONGODB_URI)
-.then(() => {
-    console.log("Connected to MongoDB");
-})
-.catch((err) => {
-    console.log("MongoDB connection error:", err);
-});
 
 module.exports = app;
