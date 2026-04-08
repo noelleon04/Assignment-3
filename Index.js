@@ -68,7 +68,7 @@ app.get("/", async (req, res) => {
 
     let galInfo = {
       options: buttonOptions,
-      picture: "earth.jpg",
+      picture: "Earth.jpg",
       username: req.LoginCookie.user,
       galleryName: "GALLERY",
       id: ""

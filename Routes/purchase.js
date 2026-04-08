@@ -1,10 +1,13 @@
 const express = require ("express");
 const router = express.Router();
 const Country = require("../Models/schemas");
+const connectDB = require("./db");
+
 
 
 router.get("/:id", async (req, res) =>{
     try{
+        await connectDB();
         const foundItem = await Country.findById(req.params.id)
         if(!foundItem){
             return res.send("Item was not found");
@@ -30,6 +33,7 @@ router.get("/:id", async (req, res) =>{
 
 router.post("/", async (req,res) =>{
     try {
+        await connectDB();
         const findItem = await Country.findOneAndUpdate({_id: req.body.id},{$set:{status:"S"}});
         res.redirect("/");
     }
@@ -42,6 +46,7 @@ router.post("/", async (req,res) =>{
 
 router.post("/backFromPurchase", async (req,res)=>{
     try{
+        await connectDB();
             const items = await Country.find({ status: "A" });
             let buttonOptions = items.map(item => {
                 return {
@@ -57,7 +62,7 @@ router.post("/backFromPurchase", async (req,res)=>{
 
             let galInfo = {
                 options: buttonOptions,
-                picture:displayPicture ||"Canada.jpg",
+                picture:displayPicture ||"Earth.jpg",
                 username:req.LoginCookie.user,
                 galleryName:displayName,
                 id: id
