@@ -1,7 +1,7 @@
 const express = require ("express");
 const router = express.Router();
 const Country = require("../Models/schemas");
-const connectDB = require("./db");
+const connectDB = require("../db");
 
 
 
